@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="480" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="description" content="<%= htmlWebpackPlugin.options.pkg.description %>" />
+  <meta name="version" content="<%= htmlWebpackPlugin.options.pkg.version %>" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+<%
+  htmlWebpackPlugin.options.includeCss.forEach((chunkName) => {
+    var chunk = htmlWebpackPlugin.files.chunks[chunkName];
+    (chunk.css || []).forEach((entry) => { %>
+  <link rel="stylesheet" type="text/css" href="<%= entry %>"<%
+      if (htmlWebpackPlugin.files.cssIntegrity) {
+        %> integrity="<%= htmlWebpackPlugin.files.cssIntegrity[htmlWebpackPlugin.files.css.indexOf(entry)] %>"<%
+        %> crossorigin="<%= webpackConfig.output.crossOriginLoading %>"<%
+      }
+      %> /><%
+    });
+  });
+
+  htmlWebpackPlugin.options.includeJs.forEach((chunkName) => {
+    var chunk = htmlWebpackPlugin.files.chunks[chunkName]; %>
+    <script defer type="text/javascript" id="script-<%= chunkName %>" src="<%= chunk.entry %>"<%
+    if (htmlWebpackPlugin.files.jsIntegrity) {
+      %> integrity="<%= htmlWebpackPlugin.files.jsIntegrity[htmlWebpackPlugin.files.js.indexOf(chunk.entry)] %>"<%
+      %> crossorigin="<%= webpackConfig.output.crossOriginLoading %>"<%
+    }
+    %>></script><%
+  });
+%>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>

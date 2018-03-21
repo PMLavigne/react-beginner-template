@@ -1,0 +1,15 @@
+{
+  "collectCoverage": true,
+  "coverageDirectory": "<rootDir>/coverage",
+  "moduleNameMapper": {
+    "^(font|img|s?css|template)/(.+)$": "<rootDir>/src/$1/$2",
+    "\\.(jpe?g|png|gif|ico|svg|eot|otf|webp|ttf|woff|woff2)$": "<rootDir>/src/flow/img-modules.js",
+    "\\.(s?css)$": "identity-obj-proxy"
+  },
+  "notify": false,
+  "testMatch": [
+    "<rootDir>/test/js?(x)/**/*.js?(x)"
+  ],
+  "verbose": false,
+  "cacheDirectory": "<rootDir>/cache"
+}
