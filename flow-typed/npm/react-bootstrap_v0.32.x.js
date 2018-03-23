@@ -1,5 +1,5 @@
-// flow-typed signature: fe9a69885d52d7801a75e7f6da28d82c
-// flow-typed version: 41bf7b055e/react-bootstrap_v0.32.x/flow_>=v0.53.x
+// flow-typed signature: 0ea5a24d56f8360d797a5893ac60cc2b
+// flow-typed version: acdc1ea56f/react-bootstrap_v0.32.x/flow_>=v0.53.x
 
 declare module "react-bootstrap" {
   import type { Node, Element, Component, Ref } from 'react';
@@ -603,7 +603,7 @@ declare module "react-bootstrap" {
   }> {}
 
   declare export class OverlayTrigger extends React$Component<{
-    trigger?: TriggerType | Array<string>,
+    trigger?: TriggerType | Array<TriggerType>,
     delay?: number,
     delayShow?: number,
     delayHide?: number,

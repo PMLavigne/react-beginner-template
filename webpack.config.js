@@ -35,7 +35,10 @@ module.exports = {
       font: path.resolve(__dirname, 'src/font'),
       img: path.resolve(__dirname, 'src/img'),
       scss: path.resolve(__dirname, 'src/scss'),
-      template: path.resolve(__dirname, 'src/template')
+      template: path.resolve(__dirname, 'src/template'),
+      _component: path.resolve(__dirname, 'src/js/util'),
+      _state: path.resolve(__dirname, 'src/js/state'),
+      _util: path.resolve(__dirname, 'src/js/util')
     }
   },
   devServer: {
@@ -46,7 +49,8 @@ module.exports = {
     stats: {
       colors: true
     },
-    noInfo: true
+    noInfo: true,
+    open: true
   },
   stats: 'normal',
   performance: {
@@ -144,7 +148,8 @@ module.exports = {
     !isProd ? new webpack.HotModuleReplacementPlugin() : null,
     new webpack.DefinePlugin({
       'process.env': {
-        IS_BROWSER: JSON.stringify('true')
+        IS_BROWSER: JSON.stringify('true'),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
       }
     }),
     new webpack.NamedModulesPlugin(),
