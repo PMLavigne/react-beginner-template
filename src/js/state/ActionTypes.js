@@ -6,6 +6,6 @@ const ActionTypes = {
   ...AppActionTypes
 };
 
-export type ActionType = $Keys<typeof ActionTypes>;
+export type ActionType = $Values<typeof AppActionTypes>;
 
 export default ActionTypes;

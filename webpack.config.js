@@ -36,7 +36,7 @@ module.exports = {
       img: path.resolve(__dirname, 'src/img'),
       scss: path.resolve(__dirname, 'src/scss'),
       template: path.resolve(__dirname, 'src/template'),
-      _component: path.resolve(__dirname, 'src/js/util'),
+      _component: path.resolve(__dirname, 'src/js/component'),
       _state: path.resolve(__dirname, 'src/js/state'),
       _util: path.resolve(__dirname, 'src/js/util')
     }

@@ -1,5 +1,3 @@
 // @flow
 
-export default {
-  APP_SET_TITLE: 'app::setTitle'
-};
+export const APP_SET_TITLE = 'app::setTitle';

@@ -1,8 +1,8 @@
 // @flow
 
-import { REDUCERS_COLLECTION_SYMBOL } from '_state/base/constants';
-import type { ActionType } from '_state/ActionTypes';
-import type { PropertyDescriptor } from '_state/base/base.types';
+import { REDUCERS_COLLECTION_SYMBOL } from './constants';
+import type { ActionType } from './ActionTypes';
+import type { PropertyDescriptor } from './base.types';
 
 export function ForAction(actionType: ActionType) {
   return (target: Class<*>, key: string, descriptor: PropertyDescriptor) => {
@@ -14,7 +14,12 @@ export function ForAction(actionType: ActionType) {
         configurable: true
       });
     }
-    target[REDUCERS_COLLECTION_SYMBOL].set(actionType, key);
+    const existing = target[REDUCERS_COLLECTION_SYMBOL].get(actionType);
+    if (!existing) {
+      target[REDUCERS_COLLECTION_SYMBOL].set(actionType, [key]);
+    } else {
+      existing.push(key);
+    }
     return descriptor;
   };
 }
