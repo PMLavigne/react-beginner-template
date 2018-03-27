@@ -2,12 +2,8 @@
 
 import AppActions from './AppActions';
 import AppReducer from './AppReducer';
-import type { AppState } from './app.types';
+import DefaultAppState from './DefaultAppState';
 
-const DefaultAppState: AppState = {
-  title: null
-};
+const appReducerInstance: AppReducer = new AppReducer();
 
-const appReducer: AppReducer = new AppReducer();
-
-export { DefaultAppState, AppActions, AppReducer, appReducer };
+export { DefaultAppState, AppActions, AppReducer, appReducerInstance };

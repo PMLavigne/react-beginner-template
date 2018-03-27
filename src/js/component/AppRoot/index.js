@@ -8,11 +8,14 @@ import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
 import type { Store } from 'redux';
 
+import getLogger from '_util/log';
 import defaultState from '_state/DefaultGlobalState';
 import ReducerManager from '_state/ReducerManager';
 import { reducerManager } from '_state';
 import type { Action, GlobalState } from '_state/state.types';
 import App from '_component/App';
+
+const log = getLogger('AppRoot');
 
 type AppRootProps = {};
 
@@ -27,7 +30,7 @@ type AppRootState = {
 export default class AppRoot extends React.Component<AppRootProps, AppRootState> {
   constructor(props: AppRootProps, context: any) {
     super(props, context);
-
+    log('Application starting');
     const logger = createLogger({
       collapsed: true
     });
@@ -40,6 +43,7 @@ export default class AppRoot extends React.Component<AppRootProps, AppRootState>
 
     if (module && module.hot && typeof module.hot.accept === 'function') {
       module.hot.accept('_state', () => {
+        log('HMR triggered reload of reducers');
         this.setState({
           reducerManager
         });

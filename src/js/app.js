@@ -5,12 +5,12 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import debug from 'debug';
 
-import AppRoot from './component/AppRoot';
+import getLogger from '_util/log';
+import AppRoot from '_component/AppRoot';
 
 // This is a simple logging library that writes to the browser console
-const log = debug('Boot');
+const log = getLogger('app');
 
 /**
  * Main entry point for the app. This is the file that is actually loaded in the browser's script tag, and should
@@ -36,6 +36,7 @@ function boot() {
  * Mount the root of the React application
  */
 function mount() {
+  log('App mounting...');
   const rootDomElement = document.getElementById('root');
   if (!rootDomElement) {
     throw new Error('Could not find the root HTML element to mount React to!');
@@ -48,6 +49,7 @@ function mount() {
     </AppContainer>,
     rootDomElement
   );
+  log('App mounted');
 }
 
 // This waits for the browser to finish loading, so we don't start the app prematurely

@@ -1,9 +1,9 @@
 // @flow
 
 import ReducerManager from '_state/ReducerManager';
-import { appReducer } from './app';
+import { appReducerInstance } from './app';
 
-const reducers = [appReducer];
+const reducers = [appReducerInstance];
 
 const reducerManager = new ReducerManager(reducers);
 
