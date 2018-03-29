@@ -11,7 +11,7 @@
     "lint": "eslint src --fix",
     "flow": "flow 2>&1",
     "stylelint": "stylelint \"src/scss/**/*.scss\" --syntax scss --fix",
-    "validate": "run-p --aggregate-output -c clean lint flow stylelint",
+    "validate": "run-p --aggregate-output -c clean lint flow",
     "dev": "run-s validate build:dev",
     "dev:serve": "run-s validate serve",
     "build": "webpack -p --color --display-error-details --mode production",
